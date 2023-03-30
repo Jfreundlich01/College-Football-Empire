@@ -1,34 +1,32 @@
-import "./styles.css";
 import { useEffect, useState } from "react";
-import { generatelPlayer } from "./Players/generatePlayer";
+import { generatePlayer } from "../utils/Players/generatePlayer";
 
 export default function App() {
   // Define the state for the players
   const [players, setPlayers] = useState([]);
   const [render, setRender] = useState(true);
   // Use the useEffect hook to generate the players when the component mounts
-  useEffect(() => {
-    for (let i = 0; i < 200; i++) {
-      setPlayers((prevPlayers) => [
-        ...prevPlayers,
-        generatelPlayer("RB", "Boston, MA"),
-      ]);
-    }
-    // generateTeam();
-  }, [render]);
 
+  const handleClick = () => {
+    setPlayers((prevPlayers) => {
+      let updatedPlayers = [...prevPlayers];
+      for (let i = 0; i < 500; i++) {
+        const newPlayer = generatePlayer("TE", "Boston, Ma");
+        updatedPlayers.push(newPlayer);
+      }
+      // updatedPlayers.sort((a, b) => b.overall - a.overall); // sort by overall
+      return updatedPlayers;
+    });
+  };
+
+  const sorted = players.sort((a, b) => b.overall - a.overall);
+
+  console.log(sorted);
   return (
     <div className="App">
       <h1>Hello CodeSandbox</h1>
       <h2>Start editing to see some magic happen!</h2>
-      <button
-        onClick={() => {
-          console.log(players);
-          // generateTeam();
-        }}
-      >
-        Click me to do something
-      </button>
+      <button onClick={handleClick}>Click me to do something</button>
       <ul>
         {/* {players.map((player, index) => (
           <li key={index}>

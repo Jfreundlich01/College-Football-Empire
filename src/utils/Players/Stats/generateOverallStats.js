@@ -1,13 +1,23 @@
 import { generateQB } from "../generatePlayers/QB";
-import { baseStats } from "./BaseStats";
 import { generateRB } from "../generatePlayers/RB";
+import { generateWR } from "../generatePlayers/WR";
+import { generateTE } from "../generatePlayers/TE";
+import { getOverall } from "@/utils/getOverall";
 
-export function generateOverallStats(position, age) {
-  let stats = baseStats;
-
+export function generateOverallStats(position, age, uniqueStats) {
+  let stats, overall;
   if (position === "QB") {
-    return generateQB(age, stats);
+    stats = generateQB(age, uniqueStats);
+    overall = getOverall(stats, position);
   } else if (position === "RB") {
-    return generateRB(age, stats);
+    stats = generateRB(age, uniqueStats);
+    overall = getOverall(stats, position);
+  } else if (position === "WR") {
+    stats = generateWR(age, uniqueStats);
+    overall = getOverall(stats, position);
+  } else if (position === "TE") {
+    stats = generateTE(age, uniqueStats);
+    overall = getOverall(stats, position);
   }
+  return { stats, overall };
 }
