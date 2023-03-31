@@ -2,7 +2,7 @@ import { getRandomInt } from "../../getRandomInt";
 import { getAgeMult } from "../getAgeMult";
 
 export const generateQB = (age, baseStats) => {
-  const stats = baseStats;
+  const stats = { ...baseStats };
 
   stats.generalRatings.Speed = getRandomInt(40, 100) + getAgeMult(age);
   stats.generalRatings.Acceleration = getRandomInt(40, 85) + getAgeMult(age);
@@ -16,16 +16,16 @@ export const generateQB = (age, baseStats) => {
   stats.ballCarrierRatings.BreakSack = getRandomInt(40, 75) + getAgeMult(age);
   stats.ballCarrierRatings.ChangeOfDirection =
     getRandomInt(40, 75) + getAgeMult(age);
-  stats.PasserRatings.ThrowPower = getRandomInt(40, 85) + getAgeMult(age);
-  stats.PasserRatings.ThrowAccuracyShort =
+  stats.passerRatings.ThrowPower = getRandomInt(40, 85) + getAgeMult(age);
+  stats.passerRatings.ThrowAccuracyShort =
     getRandomInt(40, 80) + getAgeMult(age);
-  stats.PasserRatings.ThrowAccuracyMedium =
+  stats.passerRatings.ThrowAccuracyMedium =
     getRandomInt(40, 80) + getAgeMult(age);
-  stats.PasserRatings.ThrowAccuracyDeep =
+  stats.passerRatings.ThrowAccuracyDeep =
     getRandomInt(40, 80) + getAgeMult(age);
-  stats.PasserRatings.ThrowontheRun = getRandomInt(40, 80) + getAgeMult(age);
-  stats.PasserRatings.PlayAction = getRandomInt(40, 80) + getAgeMult(age);
-  stats.PasserRatings.ThrowUnderPressure =
+  stats.passerRatings.ThrowontheRun = getRandomInt(40, 80) + getAgeMult(age);
+  stats.passerRatings.PlayAction = getRandomInt(40, 80) + getAgeMult(age);
+  stats.passerRatings.ThrowUnderPressure =
     getRandomInt(40, 80) + getAgeMult(age);
 
   return stats;

@@ -2,10 +2,10 @@ import { getRandomInt } from "../../getRandomInt";
 import { getAgeMult } from "../getAgeMult";
 
 export const generateRB = (age, baseStats) => {
-  const stats = { baseStats };
+  const stats = { ...baseStats };
 
   // GeneralRatings
-  stats.generalRatings.Speed = getRandomInt(70, 100) + getAgeMult(age);
+  stats.generalRatings.Speed = getRandomInt(70, 90) + getAgeMult(age);
   stats.generalRatings.Acceleration = getRandomInt(70, 90) + getAgeMult(age);
   stats.generalRatings.Agility = getRandomInt(70, 90) + getAgeMult(age);
   stats.generalRatings.Jumping = getRandomInt(70, 90) + getAgeMult(age);

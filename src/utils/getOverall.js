@@ -130,6 +130,22 @@ export const getOverall = (uniqueStats, position) => {
     receivingRatingsWeight = 0.3;
     kickingRatingsWeight = 0.05;
     kickReturnWeight = 0.05;
+  } else if (
+    position === "LT" ||
+    position === "LG" ||
+    position === "LG" ||
+    position === "C" ||
+    position === "RG" ||
+    position === "RT"
+  ) {
+    generalRatingsWeight = 0.25;
+    ballCarrierRatingsWeight = 0.01;
+    passerRatingsWeight = 0.01;
+    blockingRatingsWeight = 0.7;
+    defenseRatingsWeight = 0.01;
+    receivingRatingsWeight = 0.01;
+    kickingRatingsWeight = 0.005;
+    kickReturnWeight = 0.005;
   }
 
   let overall =

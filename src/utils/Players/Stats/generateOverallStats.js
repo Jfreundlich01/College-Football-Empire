@@ -2,6 +2,7 @@ import { generateQB } from "../generatePlayers/QB";
 import { generateRB } from "../generatePlayers/RB";
 import { generateWR } from "../generatePlayers/WR";
 import { generateTE } from "../generatePlayers/TE";
+import { generateOL } from "../generatePlayers/OL";
 import { getOverall } from "@/utils/getOverall";
 
 export function generateOverallStats(position, age, uniqueStats) {
@@ -17,6 +18,16 @@ export function generateOverallStats(position, age, uniqueStats) {
     overall = getOverall(stats, position);
   } else if (position === "TE") {
     stats = generateTE(age, uniqueStats);
+    overall = getOverall(stats, position);
+  } else if (
+    position === "LT" ||
+    position === "LG" ||
+    position === "LG" ||
+    position === "C" ||
+    position === "RG" ||
+    position === "RT"
+  ) {
+    stats = generateOL(age, uniqueStats);
     overall = getOverall(stats, position);
   }
   return { stats, overall };
