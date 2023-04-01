@@ -72,6 +72,21 @@ export default function App() {
       const newPlayer = generatePlayer("RT", "Boston, Ma");
       newPlayers.push(newPlayer);
     }
+    // generate 5 CBs
+    for (let i = 0; i < 5; i++) {
+      const newPlayer = generatePlayer("CB", "Boston, Ma");
+      newPlayers.push(newPlayer);
+    }
+    // generate 3 FSs
+    for (let i = 0; i < 3; i++) {
+      const newPlayer = generatePlayer("FS", "Boston, Ma");
+      newPlayers.push(newPlayer);
+    }
+    // generate 3 SSs
+    for (let i = 0; i < 3; i++) {
+      const newPlayer = generatePlayer("SS", "Boston, Ma");
+      newPlayers.push(newPlayer);
+    }
 
     setPlayers(newPlayers);
   };
@@ -79,7 +94,7 @@ export default function App() {
   console.log(players);
   return (
     <div className="App">
-      <h1>Hello CodeSandbox</h1>
+      <h1>Hello Graham</h1>
       <h2>Start editing to see some magic happen!</h2>
       <button onClick={handleClick}>Click me to do something</button>
       <ul>

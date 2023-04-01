@@ -3,6 +3,7 @@ import { generateRB } from "../generatePlayers/RB";
 import { generateWR } from "../generatePlayers/WR";
 import { generateTE } from "../generatePlayers/TE";
 import { generateOL } from "../generatePlayers/OL";
+import { generateDB } from "../generatePlayers/DB";
 import { getOverall } from "@/utils/getOverall";
 
 export function generateOverallStats(position, age, uniqueStats) {
@@ -28,6 +29,9 @@ export function generateOverallStats(position, age, uniqueStats) {
     position === "RT"
   ) {
     stats = generateOL(age, uniqueStats);
+    overall = getOverall(stats, position);
+  } else if (position === "CB" || position === "FS" || position === "SS") {
+    stats = generateDB(age, uniqueStats);
     overall = getOverall(stats, position);
   }
   return { stats, overall };

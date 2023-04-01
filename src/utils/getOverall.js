@@ -146,6 +146,15 @@ export const getOverall = (uniqueStats, position) => {
     receivingRatingsWeight = 0.01;
     kickingRatingsWeight = 0.005;
     kickReturnWeight = 0.005;
+  } else if (position === "CB" || position === "FS" || position === "SS") {
+    generalRatingsWeight = 0.25;
+    ballCarrierRatingsWeight = 0.01;
+    passerRatingsWeight = 0.01;
+    blockingRatingsWeight = 0.01;
+    defenseRatingsWeight = 0.6;
+    receivingRatingsWeight = 0.01;
+    kickingRatingsWeight = 0.005;
+    kickReturnWeight = 0.1;
   }
 
   let overall =
