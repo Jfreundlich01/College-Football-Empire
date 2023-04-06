@@ -155,6 +155,33 @@ export const getOverall = (uniqueStats, position) => {
     receivingRatingsWeight = 0.01;
     kickingRatingsWeight = 0.005;
     kickReturnWeight = 0.1;
+  } else if (position === "ROLB" || position === "LOLB") {
+    generalRatingsWeight = 0.35;
+    ballCarrierRatingsWeight = 0.01;
+    passerRatingsWeight = 0.01;
+    blockingRatingsWeight = 0.01;
+    defenseRatingsWeight = 0.6;
+    receivingRatingsWeight = 0.005;
+    kickingRatingsWeight = 0.005;
+    kickReturnWeight = 0.005;
+  } else if (position === "MLB") {
+    generalRatingsWeight = 0.3;
+    ballCarrierRatingsWeight = 0.01;
+    passerRatingsWeight = 0.01;
+    blockingRatingsWeight = 0.01;
+    defenseRatingsWeight = 0.6;
+    receivingRatingsWeight = 0.01;
+    kickingRatingsWeight = 0.005;
+    kickReturnWeight = 0.005;
+  } else if (position === "DL") {
+    generalRatingsWeight = 0.35;
+    ballCarrierRatingsWeight = 0.005;
+    passerRatingsWeight = 0.005;
+    blockingRatingsWeight = 0.005;
+    defenseRatingsWeight = 0.65;
+    receivingRatingsWeight = 0.005;
+    kickingRatingsWeight = 0.005;
+    kickReturnWeight = 0.005;
   }
 
   let overall =

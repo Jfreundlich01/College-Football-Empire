@@ -87,6 +87,25 @@ export default function App() {
       const newPlayer = generatePlayer("SS", "Boston, Ma");
       newPlayers.push(newPlayer);
     }
+    // generate 3 ROLBs
+    for (let i = 0; i < 3; i++) {
+      const newPlayer = generatePlayer("ROLB", "Boston, Ma");
+      newPlayers.push(newPlayer);
+    }
+    // generate 3 LOLBs
+    for (let i = 0; i < 3; i++) {
+      const newPlayer = generatePlayer("LOLB", "Boston, Ma");
+      newPlayers.push(newPlayer);
+    }
+    // generate 3 MLBs
+    for (let i = 0; i < 3; i++) {
+      const newPlayer = generatePlayer("MLB", "Boston, Ma");
+      newPlayers.push(newPlayer);
+    }
+    for (let i = 0; i < 3; i++) {
+      const newPlayer = generatePlayer("DL", "Boston, Ma");
+      newPlayers.push(newPlayer);
+    }
 
     setPlayers(newPlayers);
   };
