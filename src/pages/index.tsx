@@ -1,24 +1,15 @@
 import { useEffect, useState } from "react";
 import { generatePlayer } from "../utils/Players/generatePlayer";
+import { Box } from "@mui/system";
+import { Typography } from "@mui/material";
+import { Button } from "@mui/material";
+import { RosterTable } from "@/components/Roster/RosterTable";
 
 export default function App() {
   // Define the state for the players
   const [players, setPlayers] = useState([]);
   const [team, setTeam] = useState([]);
   const [render, setRender] = useState(true);
-  // Use the useEffect hook to generate the players when the component mounts
-
-  // const handleClick = () => {
-  //   setPlayers((prevPlayers) => {
-  //     let updatedPlayers = [...prevPlayers];
-  //     for (let i = 0; i < 500; i++) {
-  //       const newPlayer = generatePlayer("TE", "Boston, Ma");
-  //       updatedPlayers.push(newPlayer);
-  //     }
-  //     // updatedPlayers.sort((a, b) => b.overall - a.overall); // sort by overall
-  //     return updatedPlayers;
-  //   });
-  // };
 
   const handleClick = () => {
     let newPlayers = [];
@@ -102,8 +93,19 @@ export default function App() {
       const newPlayer = generatePlayer("MLB", "Boston, Ma");
       newPlayers.push(newPlayer);
     }
+    // generare 3 DL
     for (let i = 0; i < 3; i++) {
       const newPlayer = generatePlayer("DL", "Boston, Ma");
+      newPlayers.push(newPlayer);
+    }
+    // generate 2 k
+    for (let i = 0; i < 2; i++) {
+      const newPlayer = generatePlayer("K", "Boston, Ma");
+      newPlayers.push(newPlayer);
+    }
+    // generate 2 P
+    for (let i = 0; i < 2; i++) {
+      const newPlayer = generatePlayer("P", "Boston, Ma");
       newPlayers.push(newPlayer);
     }
 
@@ -112,18 +114,11 @@ export default function App() {
 
   console.log(players);
   return (
-    <div className="App">
-      <h1>Hello Graham</h1>
-      <h2>Start editing to see some magic happen!</h2>
-      <button onClick={handleClick}>Click me to do something</button>
-      <ul>
-        {/* {players.map((player, index) => (
-          <li key={index}>
-            {player.firstName} {player.lastName} - Age: {player.age}
-            {player.year}
-          </li>
-        ))} */}
-      </ul>
-    </div>
+    <Box className="App">
+      <Typography>Roster</Typography>
+      <Typography>Make a team</Typography>
+      <Button onClick={handleClick}>Click To generate a team</Button>
+      {players && <RosterTable players={players} />}
+    </Box>
   );
 }

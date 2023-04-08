@@ -1,8 +1,5 @@
 export const getOverall = (uniqueStats, position) => {
   let stats = uniqueStats;
-  console.log(stats);
-  console.log("getOVerall Ran");
-  console.log("position", position);
 
   const generalRatingsOverall =
     (stats.generalRatings.Speed +
@@ -15,7 +12,6 @@ export const getOverall = (uniqueStats, position) => {
       stats.generalRatings.Stamina +
       stats.generalRatings.Toughness) /
     9;
-  console.log(`generalRatingsOverall`, generalRatingsOverall);
 
   const ballCarrierRatingsOverall =
     (stats.ballCarrierRatings.Carrying +
@@ -28,7 +24,6 @@ export const getOverall = (uniqueStats, position) => {
       stats.ballCarrierRatings.BreakSack +
       stats.ballCarrierRatings.ChangeOfDirection) /
     9;
-  console.log(`ballCarrierRatingsOverall`, ballCarrierRatingsOverall);
 
   const blockingRatingsOverall =
     (stats.blockingRatings.RunBlock +
@@ -40,7 +35,6 @@ export const getOverall = (uniqueStats, position) => {
       stats.blockingRatings.PassBlockFinesse +
       stats.blockingRatings.LeadBlock) /
     8;
-  console.log(`blockingRatingsOverall`, blockingRatingsOverall);
 
   const passerRatingsOverall =
     (stats.passerRatings.ThrowPower +
@@ -51,7 +45,6 @@ export const getOverall = (uniqueStats, position) => {
       stats.passerRatings.ThrowPower +
       stats.passerRatings.ThrowPower) /
     7;
-  console.log(`passerRatingsOverall`, passerRatingsOverall);
 
   const defenseRatingsOverall =
     (stats.defenseRatings.Tackle +
@@ -65,7 +58,6 @@ export const getOverall = (uniqueStats, position) => {
       stats.defenseRatings.HitPower +
       stats.defenseRatings.Press) /
     10;
-  console.log(`defenseRatingsOverall`, defenseRatingsOverall);
 
   const receivingRatingsOverall =
     (stats.receivingRatings.Catching +
@@ -76,15 +68,15 @@ export const getOverall = (uniqueStats, position) => {
       stats.receivingRatings.DeepRouteRunning +
       stats.receivingRatings.Release) /
     8;
-  console.log(`receivingRatingsOverall`, receivingRatingsOverall);
 
   let kickingRatingsOverall =
     (stats.kickingRatings.KickPower + stats.kickingRatings.KickAccuracy) / 2;
-  console.log(`kickingRatingsOverall`, kickingRatingsOverall);
 
   let kickReturnOverall = stats.kickingRatings.KickReturn;
-  console.log(`kickReturnOverall`, kickReturnOverall);
-
+  if (position === "K" || position === "P") {
+    let overall = kickingRatingsOverall;
+    return overall;
+  }
   let generalRatingsWeight;
   let ballCarrierRatingsWeight;
   let passerRatingsWeight;
@@ -193,7 +185,6 @@ export const getOverall = (uniqueStats, position) => {
     receivingRatingsWeight * receivingRatingsOverall +
     kickingRatingsWeight * kickingRatingsOverall +
     kickReturnWeight * kickReturnOverall;
-  console.log(overall);
 
   return overall;
 };

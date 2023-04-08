@@ -7,6 +7,7 @@ import { generateDB } from "../generatePlayers/DB";
 import { generateOLB } from "../generatePlayers/OLB";
 import { generateMLB } from "../generatePlayers/MLB";
 import { generateDL } from "../generatePlayers/DL";
+import { generateKP } from "../generatePlayers/KP";
 import { getOverall } from "@/utils/getOverall";
 
 export function generateOverallStats(position, age, uniqueStats) {
@@ -44,6 +45,9 @@ export function generateOverallStats(position, age, uniqueStats) {
     overall = getOverall(stats, position);
   } else if (position === "DL") {
     stats = generateDL(age, uniqueStats);
+    overall = getOverall(stats, position);
+  } else if (position === "K" || position === "P") {
+    stats = generateKP(age, uniqueStats);
     overall = getOverall(stats, position);
   }
   return { stats, overall };
