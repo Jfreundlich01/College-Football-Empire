@@ -2,12 +2,12 @@ export interface Player {
   position: string;
   firstName: string;
   lastName: string;
+  overall: number;
   age: number;
   year: string;
-  stats: Stats;
-  overall: number;
   location: string;
   school: string;
+  stats: Stats;
 }
 
 export interface Stats {
