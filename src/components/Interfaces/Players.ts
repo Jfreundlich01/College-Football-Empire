@@ -1,9 +1,9 @@
 export interface Player {
+  position: string;
   firstName: string;
   lastName: string;
   age: number;
   year: string;
-  position: string;
   stats: Stats;
   overall: number;
   location: string;
