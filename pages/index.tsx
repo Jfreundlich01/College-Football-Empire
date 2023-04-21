@@ -1,11 +1,38 @@
+import type { NextPage } from "next";
+import Head from "next/head";
+import { getSession, GetSessionParams } from "next-auth/react";
 import { useEffect, useState } from "react";
-import { generatePlayer } from "../utils/Players/generatePlayer";
+import { generatePlayer } from "../src/utils/Players/generatePlayer";
 import { Box } from "@mui/system";
 import { Typography } from "@mui/material";
 import { Button } from "@mui/material";
 import { RosterTable } from "@/components/Roster/RosterTable";
 
-export default function App() {
+// NOTE: THis page can be used as a marketing landing page that can have
+// a login button that can redirect the user to /auth/login.
+// For now, it's not in use, instead we redirect the user to the dashboard
+// or auth/login depending on the session
+export const getServerSideProps = async (ctx: GetSessionParams) => {
+  const session = await getSession(ctx);
+  if (session === null) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "auth/login",
+      },
+    };
+  }
+  return {
+    redirect: {
+      permanent: false,
+      destination: "authorized/dashboard",
+    },
+  };
+};
+
+const Home: NextPage = () => {
+  // console.log('Debug');
+
   // Define the state for the players
   const [players, setPlayers] = useState([]);
   const [team, setTeam] = useState([]);
@@ -111,8 +138,6 @@ export default function App() {
 
     setPlayers(newPlayers);
   };
-
-  console.log(players);
   return (
     <Box className="App">
       <Typography>Roster</Typography>
@@ -121,4 +146,6 @@ export default function App() {
       {players && <RosterTable players={players} />}
     </Box>
   );
-}
+};
+
+export default Home;
